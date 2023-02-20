@@ -1,5 +1,7 @@
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-    roots: ["<rootDir>/src"],
+  preset: 'ts-jest',
+  roots: ["<rootDir>/src"],
     collectCoverageFrom: [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts",
@@ -24,8 +26,7 @@ module.exports = {
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
     },
     moduleFileExtensions: [
-      // Place tsx and ts to beginning as suggestion from Jest team
-      // https://jestjs.io/docs/configuration#modulefileextensions-arraystring
+      
       "tsx",
       "ts",
       "web.js",
@@ -42,4 +43,4 @@ module.exports = {
       "jest-watch-typeahead/testname",
     ],
     resetMocks: true,
-  };
+};

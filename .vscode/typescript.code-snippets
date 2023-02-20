@@ -1,0 +1,117 @@
+{
+	"React Component": {
+		"prefix": "react-component",
+		"description": "Creates a react function component without props",
+		"body": [
+			"import React from \"react\"",
+			"",
+			"export interface ${1:name}Props {",
+			"\t${0}",
+			"}",
+			"",
+			"const ${1:name}Component = (props: ${1:name}Props) => {",
+			"}",
+			"",
+			"export const ${1:name} = React.memo(${1:name}Component)"
+		],
+		"scope": "typescriptreact"
+	},
+	"React Propless Component": {
+		"prefix": "react-component-propless",
+		"description": "Creates a react function component without props",
+		"body": ["import React from \"react\"", "", "export const ${1:name} = () => (${0})"],
+		"scope": "typescriptreact"
+	},
+	"Export default": {
+		"prefix": "export-default",
+		"description": "Creates a default export for an index file",
+		"body": ["export { default } from \"./${1:name}\""],
+		"scope": "typescript"
+	},
+	"React Context": {
+		"prefix": "react-context",
+		"description": "Creates a context base including default usage hook",
+		"body": [
+			"import { createContext } from \"react\"",
+			"",
+			"import { createContextUser } from \"@react-structure/utils/react/createContextUser\"",
+			"",
+			"interface ${1:name}ContextProps {",
+			"\t${0}",
+			"}",
+			"",
+			"// eslint-disable-next-line @typescript-eslint/no-explicit-any",
+			"const ${1:name}Context = createContext<${1:name}ContextProps>(undefined as any)",
+			"${1:name}Context.displayName = \"${1:name}Context\"",
+			"export const use${1:name} = createContextUser(${1:name}Context)"
+		]
+	},
+	"React Service": {
+		"prefix": "react-service",
+		"description": "Creates a react service context with a provider",
+		"body": [
+			"import React, { createContext } from \"react\"",
+			"",
+			"import { createContextUser } from \"@fido/utils/react/createContextUser\"",
+			"",
+			"interface ${1:name}ServiceProps {",
+			"\t${0}",
+			"}",
+			"",
+			"const ${1:name}Service = createContext<${1:name}ServiceProps | undefined>(undefined)",
+			"${1:name}Service.displayName = \"${1:name}Service\"",
+			"export const use${1:name}Service = createContextUser(${1:name}Service)",
+			"",
+			"export interface Provide${1:name}ServiceProps {",
+			"\tchildren: React.ReactNode",
+			"}",
+			"",
+			"const Provide${1:name}ServiceComponent = ({children}: Provide${1:name}ServiceProps) => {",
+			"\treturn (",
+			"\t\t<${1:name}Service.Provider value={}>{children}</${1:name}Service.Provider>",
+			"\t)",
+			"}",
+			"",
+			"export const Provide${1:name}Service = React.memo(Provide${1:name}ServiceComponent)"
+		],
+		"scope": "typescriptreact"
+	},
+	"React Context Provider": {
+		"prefix": "react-context-provider",
+		"description": "Creates a react context provider with automatic children support",
+		"body": [
+			"import React from \"react\"",
+			"",
+			"export interface ${1:name}ProviderProps {",
+			"\tchildren: React.ReactNode",
+			"}",
+			"",
+			"const ${1:name}ProviderComponent = ({children}: ${1:name}ProviderProps) => {",
+			"\t${0}",
+			"\treturn (",
+			"\t\t<${1:name}Context.Provider value={}>{children}</${1:name}Context.Provider>",
+			"\t)",
+			"}",
+			"",
+			"export const ${1:name}Provider = React.memo(${1:name}ProviderComponent)"
+		],
+		"scope": "typescriptreact"
+	},
+	"Zod Schema": {
+		"prefix": "zod-schema",
+		"description": "Define a Zod schema with type inferrence",
+		"body": [
+			"import { z } from \"nestjs-zod/z\"",
+			"",
+			"export const Z${1:name} = z.${0}",
+			"export type ${1:name} = z.infer<typeof Z${1:name}>"
+		],
+		"scope": "typescript"
+	},
+	"React Named Fragment": {
+		"prefix": "nfragment",
+		"description": "Creates a named react fragment",
+		"body": ["<Fragment>{${0}}</Fragment>"],
+		"scope": "typescriptreact"
+	}
+}
