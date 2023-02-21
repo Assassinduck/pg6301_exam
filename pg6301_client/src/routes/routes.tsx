@@ -1,14 +1,17 @@
 import React from "react"
-import { Navigate, Routes as ReactRouterRoutes, Route } from "react-router-dom"
+import { Navigate, Routes as ReactRouterRoutes, Route, createBrowserRouter } from "react-router-dom"
+import { EmployeeActivities } from "../features/EmployeeActivitiesView"
 import { MainLayout } from "../layout/MainLayout/MainLayout"
-import { LoginPage } from "./pages"
+import { UserLoginPage } from "./pages"
+import { EmployeeActivitiesPage } from "./pages/EmployeeActivitiesPage"
 
 
-export const Routes = () => (
+export const Routes = () =>  (
 		<ReactRouterRoutes>
 			<Route path="/" element={<MainLayout />}>
-				<Route index element={<LoginPage />} />
+			<Route index element={<UserLoginPage />} />
+			<Route path="employee/:id"element={<EmployeeActivitiesPage/>} />
 				
 			</Route>
 		</ReactRouterRoutes>
-)
+ 	)

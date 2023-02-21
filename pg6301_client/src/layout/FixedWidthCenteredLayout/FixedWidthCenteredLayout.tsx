@@ -4,9 +4,10 @@ import { Outlet } from "react-router-dom"
 
 const Container = styled.div<{ maxWidth: number }>`
 	max-width: ${({ maxWidth }) => maxWidth}px;
-	width: 100%;
 	padding: 0 24px;
-	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `
 
 const Content = styled.div`

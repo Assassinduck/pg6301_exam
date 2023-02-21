@@ -1,0 +1,44 @@
+{
+  "name": "pg6301_exam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:client && npm run test:server",
+    "test:coverage": "npm run test:client:coverage",
+    "test:client": "cd pg6301_client && npm test -- --collectCoverage",
+    "test:client:coverage": "cd pg6301_client && npm test -- --collectCoverage",
+    "test:server": "cd pg6301_server && npm test -- --collectCoverage",
+    "test:server:coverage": "cd pg6301_server && npm test -- --collectCoverage",
+    "dev": "concurrently npm:dev:client npm:dev:server",
+    "dev:client": "cd pg6301_client && npm run dev",
+    "dev:server": "cd pg6301_server && npm run dev",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd pg6301_client && npm run build",
+    "build:server": "cd pg6301_server && npm run build",
+    "start": "cd pg6301_server && npm start",
+    "prepare": "husky install",
+    "postinstall": "npm run install:client && npm run install:server",
+    "install:client": "cd pg6301_client && npm install",
+    "install:server": "cd pg6301_server && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Assassinduck/pg6301_exam.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Assassinduck/pg6301_exam/issues"
+  },
+  "homepage": "https://github.com/Assassinduck/pg6301_exam#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "concurrently": "^7.6.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
+  },
+  "dependencies": {
+    "zustand": "^4.3.3"
+  }
+}

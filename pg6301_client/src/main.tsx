@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM, { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import App from './App'
+import { BrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
-import { LoginPage } from './routes/pages/LoginPage'
+import { UserLoginPage } from './routes/pages/UserLoginPage'
+import { Routes } from './routes/routes'
 import { ProvideReactQueryService } from './services/reactQueryService'
+import { UserSessionServiceProvider } from './services/UserRoleService/UserSessionService'
 
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
@@ -19,21 +20,20 @@ declare global {
 }
 window._app = window._app ?? {}
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
-  }
-])
+
 
 root.render(
   <React.StrictMode>
-  <ProvideReactQueryService>
-      <RouterProvider router={router} />
+    <ProvideReactQueryService>
+      <UserSessionServiceProvider>
+      <BrowserRouter>
+      <Routes />
+
+      </BrowserRouter>
+    </UserSessionServiceProvider>
+
+      
       </ProvideReactQueryService>
+      
   </React.StrictMode>,
 )
