@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "loginBackground": "url(/public/LoginBackground.svg)",
+        "loginBackground": "url(/LoginBackground.svg)",
       }
     },
     container: {

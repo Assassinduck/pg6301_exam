@@ -17,7 +17,7 @@
     "build:client": "cd pg6301_client && npm run build",
     "build:server": "cd pg6301_server && npm run build",
     "start": "cd pg6301_server && npm start",
-    "prepare": "husky install",
+    "prepare": "npx husky install",
     "postinstall": "npm run install:client && npm run install:server",
     "install:client": "cd pg6301_client && npm install",
     "install:server": "cd pg6301_server && npm install"

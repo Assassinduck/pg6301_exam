@@ -1,50 +1,73 @@
+
 import express, { Express } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
-import config from '../config.json';
-import { getFilesWithKeyword } from './utils/getFilesWithKeyword';
+import db from './app/models';
+import dbConfig from './app/config/db.config';
 
-const app: Express = express();
+const app = express();
 
-/************************************************************************************
- *                              Basic Express Middlewares
- ***********************************************************************************/
+var corsOptions = {
+  origin: "http://localhost:8081"
+};
 
-app.set('json spaces', 4);
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
 app.use(express.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-// Handle logs in console during development
-if (process.env.NODE_ENV === 'development' || config.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-  app.use(cors());
-}
-
-// Handle security and origin in production
-if (process.env.NODE_ENV === 'production' || config.NODE_ENV === 'production') {
-  app.use(helmet());
-}
-
-/************************************************************************************
- *                               Register all routes
- ***********************************************************************************/
-
-getFilesWithKeyword('router', __dirname + '/app').forEach((file: string) => {
-  const { router } = require(file);
-  app.use('/', router);
-})
-/************************************************************************************
- *                               Express Error Handling
- ***********************************************************************************/
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  return res.status(500).json({
-    errorName: err.name,
-    message: err.message,
-    stack: err.stack || 'no stack defined'
-  });
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to bezkoder application." });
 });
 
-export default app;
+const Role = db.role;
+
+const initialConnection = ()=> {
+  Role.estimatedDocumentCount((err: any, count: number) => { 
+    if (!err && count === 0) {
+      new Role({
+        name: "employee",
+        
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+  
+        console.log("added 'employee' to roles collection");
+      });
+  
+      new Role({
+        name: "Manager"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+  
+        console.log("added 'moderator' to roles collection");
+      });
+  
+      
+    }
+  }, (err: any) => {
+    console.log("error", err);
+  });
+}
+
+db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`).then(() => { 
+  console.log("Connected to the database!");
+  initialConnection();
+});
+
+
+// set port, listen for requests
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
+
+

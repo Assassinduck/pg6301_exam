@@ -27,5 +27,3 @@ router.delete("/", (req, res) => {
     message: "DELETE request from sample router"
   });
 });
-
-
