@@ -23,7 +23,7 @@ const ActivityListItem = styled.li`
 const EmployeeActivityListComponent = ({ activities, activitiesLogged }: EmployeeActivityListProps) => {
 
     const findHoursLogged = (employeeActivityName: EmployeeActivityProps["activity_name"]) => { 
-        const activity = activitiesLogged?.find((activity) => activity.activity_name === employeeActivityName )
+        const activity = activitiesLogged?.find((activity) => activity.activity_name === employeeActivityName)
         return activity?.hours_logged ?? 0
     }
 

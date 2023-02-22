@@ -1,17 +1,56 @@
 import { Db, MongoClient, ObjectId  } from "mongodb"
-import { router } from "../server"
-import { Request, Response } from "express"
+import { Request, Response, Router } from "express"
 
 export const activitiesApi = (db: Db) => { 
 
+
+    const dataSetUp = async () => {
+        const activities = await db.collection("activities").find().toArray()
+
+        if (activities.length === 0) {
+            db.collection("activities").insertMany([
+                {
+                    "_id": new ObjectId("63f576329bc5e9c40ec742cb"),
+                    "departements_autharized": [
+                      "IT",
+                      "HR"
+                    ],
+                    "description": "cool",
+                    "activity_name": "gaming"
+                },
+                {
+                    "_id": new ObjectId("63f4faeaa47821027cc39099"),
+                    "activity_name": "Meetings",
+                    "departements_autharized": [
+                      "HR"
+                    ],
+                    "description": "boring"
+                },
+                {
+                    "_id": new ObjectId( "63f4fdf744427cda29173f6a"),
+                    "departements_autharized": [
+                      "IT"
+                    ],
+                    "description": "fun",
+                    "activity_name": "coding"
+                  }
+            ])
+        }
+    }
+
+    dataSetUp()
+
+    const router: Router = Router();
+
+    
+
     router.get("/", async (req: Request, res: Response) => {
         const activities = await db.collection("activities").find().toArray()
-        console.log(activities)
         res.json(activities)
     })
 
     router.get("/:id", async (req: Request, res: Response) => { 
-        const activity = await db.collection("activities")
+        const activity =  await db.collection("activities")
             .findOne({ _id: new ObjectId(req.params.id) })
         res.json(activity)
     })
@@ -48,7 +87,9 @@ export const activitiesApi = (db: Db) => {
         })
 
         const departementEmp = employees[0]
-        console.log(departementEmp)
+        console.log("lol",departementEmp)
+
+        console.log(findActivities)
 
        
         const activites = findActivities.filter((activity) => {
@@ -62,40 +103,42 @@ export const activitiesApi = (db: Db) => {
 
         }
         
-        
-
-        
     })
-
-    router.put("/:userid/:activityId/:hours_logged", async (req: Request, res: Response) => { 
-        //update logged hours for user
+    // update hours logged on activity for employee
+    router.put("/:employeeid/:activityId/:hours_logged", async (req: Request, res: Response) => { 
         const activity = await db.collection("activities")
-            .findOne({ _id: new ObjectId(req.params.activityId) })
+            .findOne({ _id: new ObjectId(req.params.activityId)}).then((activity) => { 
+                return activity
+            })
         
         const employee = await db.collection("employees")
-            .findOne({ _id: new ObjectId(req.params.userid) })
+            .findOne({ _id: new ObjectId(req.params.employeeid) })
         
         if (activity && employee) {
-            if ((parseFloat(req.params.hours_logged) + activity.hours_logged) > 37) {
+            if ((parseFloat(req.params.hours_logged) + parseFloat(employee.hours_logged)) > 37) {
                 res.json({ error: "Logged hours cannot be greater than 37" })
                 return
             }
-            const updateActivity = await db
-                .collection("activities")
-                .updateOne({ _id: new ObjectId(req.params.activityId) }, { $set: { hours_logged: parseFloat(activity.hours_logged) + parseFloat(req.params.hours_logged) } })
+          
             
             const updateEmployeeActivityHoursLogged = await db
                 .collection("employees")
-                .updateOne({ _id: new ObjectId(req.params.userid) }, { $set: { hours_logged: parseFloat(employee.hours_logged) + parseFloat(req.params.hours_logged) } })
+                .updateOne({ _id: new ObjectId(req.params.employeeid) }, { $inc: { hours_logged: parseFloat(req.params.hours_logged) } })
             
-            console.log(updateActivity)
-            res.json(updateActivity)
+            const updateEmployeeActivity = await db
+                .collection("employees")
+                .updateOne({ _id: new ObjectId(req.params.employeeid), "activities_logged.activity_ref": new ObjectId(req.params.activityId) }, { $inc: { "activities_logged.$.hours_logged":  parseFloat(req.params.hours_logged)  } })
+            
+            res.json({ message: "Hours logged updated" })
         } else {
             res.json({ error: "Activity not found" })
         }
     })
-    router.post("/activities", async (req: Request, res: Response) => { 
-
+    router.post("/createactivity", async (req: Request, res: Response) => { 
+        const activity = req.body
+        console.log("activity",activity)
+        const insertActivity = await db.collection("activities").insertOne(activity)
+        res.json(activity)
     })
 
 

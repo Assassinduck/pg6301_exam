@@ -12,7 +12,7 @@ interface EmployeeActivitiesByDepartementProps{
 
 export const useEmployeeActivitiesByDepartement = () => { 
     const params: EmployeeActivitiesByDepartementProps = {
-        employeeId: "63f4f3abb46d3f4a1eb4cf35",
+        employeeId: "63f4f1ceb46d3f4a1eb4cf34",
         departement: "IT"
     }
     return useQuery(employeeActivityKeys.byDepartement(params), async () => {

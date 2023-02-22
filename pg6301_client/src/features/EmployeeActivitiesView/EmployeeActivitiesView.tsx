@@ -30,8 +30,8 @@ const EmployeeActivityViewContainer = styled.div`
 
 const ActivitiesComponent = (props: ActivitiesProps) => {
 
-    const { data: activities } = useEmployeeActivitiesByDepartement()
-    const {data: employee} = useEmployeeData()
+    const { data: activities, refetch: activityRefetch } = useEmployeeActivitiesByDepartement()
+    const {data: employee, refetch: employeRefetch} = useEmployeeData()
 
     const navigate = useNavigate()
 
@@ -49,9 +49,10 @@ const ActivitiesComponent = (props: ActivitiesProps) => {
             <h1 className="text-lg">Employee Activities</h1>
             <h2 className="text-lg">Welcome {employee?.name ?? "employee"}</h2>
                 <p>Total Hours logged: {employee?.hours_logged}</p>   
-                <EmployeeActivityLogForm/>
             </EmployeeTitleContainer>
-          
+
+            <EmployeeActivityLogForm activityRefetch={activityRefetch} employeeRefetch={employeRefetch} activities={activities} employee={employee} />
+            
             <EmployeeActivityList activities={activities} activitiesLogged={ employee?.activities_logged } />
         </EmployeeActivityViewContainer>
     )

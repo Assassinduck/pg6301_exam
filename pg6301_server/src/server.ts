@@ -20,13 +20,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-export const router: Router = Router();
+const router: Router = Router();
 
 
-const mongoClient = new MongoClient("mongodb://127.0.0.1:27017");
+const mongoClient = new MongoClient("mongodb://127.0.0.1:27017",{appName: "pgr6301"});
 
 mongoClient.connect().then(async () => { 
   console.log("Connected to mongodb");
+  
+  
+  
+
+
   app.use("/api/employees", employeesApi(mongoClient.db("pgr6301")));
   app.use("/api/activities", activitiesApi(mongoClient.db("pgr6301")));
   

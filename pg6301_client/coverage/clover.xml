@@ -1,6 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676917491484" clover="3.2.0">
-  <project timestamp="1676917491484" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1677051643904" clover="3.2.0">
+  <project timestamp="1677051643904" name="All files">
+    <metrics statements="118" coveredstatements="89" conditionals="16" coveredconditionals="4" methods="38" coveredmethods="19" elements="172" coveredelements="112" complexity="0" loc="118" ncloc="118" packages="8" files="18" classes="18"/>
+    <package name="data">
+      <metrics statements="8" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="useEmployeeData.ts" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\data\useEmployeeData.ts">
+        <metrics statements="8" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="data.employeeActivityData">
+      <metrics statements="20" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="4"/>
+      <file name="employeeActivityKeys.ts" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\data\employeeActivityData\employeeActivityKeys.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="index.ts" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\data\employeeActivityData\index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="useAllEmployeeActivities.ts" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\data\employeeActivityData\useAllEmployeeActivities.ts">
+        <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+      </file>
+      <file name="useEmployeeActivitiesByDepartement.ts" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\data\employeeActivityData\useEmployeeActivitiesByDepartement.ts">
+        <metrics statements="7" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+      <file name="useMutateEmployeeActivityHours.tsx" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\data\employeeActivityData\useMutateEmployeeActivityHours.tsx">
+        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="features.EmployeeActivitiesView">
+      <metrics statements="49" coveredstatements="35" conditionals="9" coveredconditionals="3" methods="17" coveredmethods="6"/>
+      <file name="EmployeeActivitiesList.tsx" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\features\EmployeeActivitiesView\EmployeeActivitiesList.tsx">
+        <metrics statements="9" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+      </file>
+      <file name="EmployeeActivitiesView.tsx" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\features\EmployeeActivitiesView\EmployeeActivitiesView.tsx">
+        <metrics statements="11" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+      </file>
+      <file name="EmployeeActivityItem.tsx" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\features\EmployeeActivitiesView\EmployeeActivityItem.tsx">
+        <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+      </file>
+      <file name="EmployeeActivityLogForm.tsx" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\features\EmployeeActivitiesView\EmployeeActivityLogForm.tsx">
+        <metrics statements="23" coveredstatements="15" conditionals="5" coveredconditionals="1" methods="10" coveredmethods="4"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+      </file>
+      <file name="index.ts" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\features\EmployeeActivitiesView\index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="features.UserLogin">
+      <metrics statements="19" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
+      <file name="UserLogin.tsx" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\features\UserLogin\UserLogin.tsx">
+        <metrics statements="19" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="layout.CenteredLayout">
+      <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="CenteredLayout.tsx" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\layout\CenteredLayout\CenteredLayout.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="routes.pages">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="UserLoginPage.tsx" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\routes\pages\UserLoginPage.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+      <file name="index.ts" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\routes\pages\index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="services.reactQueryService">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="index.ts" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\services\reactQueryService\index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="reactQueryService.tsx" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\services\reactQueryService\reactQueryService.tsx">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="useLazyRef.ts" path="D:\Programmering\Web\temp\pgr6301_exam\pg6301_client\src\utils\useLazyRef.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
