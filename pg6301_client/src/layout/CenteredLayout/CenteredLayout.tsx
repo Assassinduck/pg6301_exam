@@ -8,7 +8,7 @@ export interface CenteredLayoutProps {
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0 24px;
+  padding: 0 0px;
   width: 100%;
 `
 const CenteredLayoutComponent = ({ children = <Outlet />, className }: CenteredLayoutProps) => {

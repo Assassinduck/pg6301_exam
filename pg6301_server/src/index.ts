@@ -1,4 +1,3 @@
-import app from './server_backupr';
 import config from '../config.json';
 
 // // Start the application by listening to specific port

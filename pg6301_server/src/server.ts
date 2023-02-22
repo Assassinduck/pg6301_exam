@@ -1,70 +1,40 @@
 
-import express, { Express } from 'express';
+import express, { Express, Router } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
-import db from './app/models';
-import dbConfig from './app/config/db.config';
+import { MongoClient } from 'mongodb';
+import dotenv from 'dotenv';
+import { activitiesApi } from './app/activityApi';
+import { employeesApi } from './app/employeeApi';
+dotenv.config();
 
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
 
-app.use(cors(corsOptions));
 
-// parse requests of content-type - application/json
+app.use(cors());
+
 app.use(express.json());
 
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});
 
-const Role = db.role;
+export const router: Router = Router();
 
-const initialConnection = ()=> {
-  Role.estimatedDocumentCount((err: any, count: number) => { 
-    if (!err && count === 0) {
-      new Role({
-        name: "employee",
-        
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-  
-        console.log("added 'employee' to roles collection");
-      });
-  
-      new Role({
-        name: "Manager"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-  
-        console.log("added 'moderator' to roles collection");
-      });
-  
-      
-    }
-  }, (err: any) => {
-    console.log("error", err);
-  });
-}
 
-db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`).then(() => { 
-  console.log("Connected to the database!");
-  initialConnection();
+const mongoClient = new MongoClient("mongodb://127.0.0.1:27017");
+
+mongoClient.connect().then(async () => { 
+  console.log("Connected to mongodb");
+  app.use("/api/employees", employeesApi(mongoClient.db("pgr6301")));
+  app.use("/api/activities", activitiesApi(mongoClient.db("pgr6301")));
+  
+}).catch(err => { 
+  console.log(err);
 });
 
 
-// set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

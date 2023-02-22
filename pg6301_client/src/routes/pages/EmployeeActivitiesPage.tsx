@@ -8,7 +8,7 @@ export interface ActivitiesPageProps {
 
 const EmployeeActivitiesPageComponent = (props: ActivitiesPageProps) => {
     return (
-        <FixedWidthCenteredLayout>
+        <FixedWidthCenteredLayout >
             <EmployeeActivities />
         </FixedWidthCenteredLayout>
     )

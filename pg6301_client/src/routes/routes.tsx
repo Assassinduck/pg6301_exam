@@ -10,7 +10,8 @@ export const Routes = () =>  (
 		<ReactRouterRoutes>
 			<Route path="/" element={<MainLayout />}>
 			<Route index element={<UserLoginPage />} />
-			<Route path="employee/:id"element={<EmployeeActivitiesPage/>} />
+			<Route path="employee" element={<EmployeeActivitiesPage />} />
+			<Route path="manager" element={<Navigate to="/manager/activities" />} />
 				
 			</Route>
 		</ReactRouterRoutes>

@@ -4,10 +4,10 @@ export interface EmployeeActivityLogFormProps {
     
 }
 
-const EmployeeActivityLogFormComponent = (props: EmployeeActivityLogFormProps) => {
+const EmployeeActivityLogFormComponent = ({}: EmployeeActivityLogFormProps) => {
     return (
         <div>
-            <h1>EmployeeActivityLogForm</h1>
+           <select></select>
         </div>
     )
 }

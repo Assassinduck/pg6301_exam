@@ -1,5 +1,6 @@
 import React from "react"
 import  styled  from '@emotion/styled';
+import { useNavigate } from "react-router-dom";
 
 export interface UserLoginProps {
     
@@ -24,7 +25,7 @@ const UserLoginComponent = (props: UserLoginProps) => {
     
     const [userType, setUserType] = React.useState<userType>(userTypes[0])
 
-    
+    const navigate = useNavigate()
     const handleUserTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setUserType(event.target.value as userType)
     }
@@ -38,22 +39,22 @@ const UserLoginComponent = (props: UserLoginProps) => {
     }
 
 
-    const handleLoggingIn = () => { 
-        console.log("Logging in with username: ", username, " and password: ", password, " as ", userType)
+    const handleNavigateToEmployee = () => { 
+        navigate("/employee")
+    }
+
+    const handleNavigateToManager = () => { 
+        navigate("/manager")
     }
 
 
     return (
         <UserLoginContainer >
             <h1 className="text-center text-white">TimeEdit User-Login</h1>
-            <select className="select select-bordered w-full max-w-xs" onChange={handleUserTypeChange}>
-                {userTypes.map((userType) => (
-                    <option key={userType} value={userType}>{userType}</option>
-                ))}
-            </select>
-            <input className="input input-bordered w-full max-w-xs" type="text" placeholder="Username" onChange={handleUsernameChange}/>
-            <input className="input input-bordered w-full max-w-xs" type="password" placeholder="Password" onChange={handlePasswordChange}/>
-            <button className="btn btn-primary" onClick={handleLoggingIn}>Login</button>
+
+            <button className="btn btn-primary" onClick={handleNavigateToEmployee}>Login as employee</button>
+            <button className="btn btn-primary" onClick={handleNavigateToManager}>Login as Manager</button>
+
         </UserLoginContainer>
     )
 }

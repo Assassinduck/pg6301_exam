@@ -1,23 +1,59 @@
+import styled from "@emotion/styled"
 import React from "react"
-import { useUserSessionService } from "../../services/UserRoleService/UserSessionService"
+import { useNavigate } from "react-router-dom"
+import { useEmployeeActivitiesByDepartement } from "../../data/employeeActivityData"
+import { useEmployeeData } from "../../data/useEmployeeData"
 import { EmployeeActivityList } from "./EmployeeActivitiesList"
+import { EmployeeActivityLogForm } from "./EmployeeActivityLogForm"
 
 export interface ActivitiesProps {
     
 }
 
+
+const EmployeeTitleContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    justify-content: center;
+`
+ 
+
+const BackButton = styled.button`
+    margin-top: 20px;
+`
+
+const EmployeeActivityViewContainer = styled.div`
+    width: 100vh;
+`
+
 const ActivitiesComponent = (props: ActivitiesProps) => {
 
-    const { getActivitiesbyDepartment } = useUserSessionService()
+    const { data: activities } = useEmployeeActivitiesByDepartement()
+    const {data: employee} = useEmployeeData()
 
-    
+    const navigate = useNavigate()
+
+    const handleGoBackToHome = () => { 
+        navigate("/")
+    }
     
 
 
     return (
-        <div>
-            <EmployeeActivityList activities={[]}/>
-        </div>
+        <EmployeeActivityViewContainer>
+            <BackButton className="btn btn-secondary" onClick={handleGoBackToHome}>go back to "login" page</BackButton>
+
+            <EmployeeTitleContainer>
+            <h1 className="text-lg">Employee Activities</h1>
+            <h2 className="text-lg">Welcome {employee?.name ?? "employee"}</h2>
+                <p>Total Hours logged: {employee?.hours_logged}</p>   
+                <EmployeeActivityLogForm/>
+            </EmployeeTitleContainer>
+          
+            <EmployeeActivityList activities={activities} activitiesLogged={ employee?.activities_logged } />
+        </EmployeeActivityViewContainer>
     )
 }
 

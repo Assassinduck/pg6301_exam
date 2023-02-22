@@ -1,22 +1,49 @@
+import styled from "@emotion/styled"
 import React from "react"
+import { EmployeeActivityProps } from "../../data/employeeActivityData"
+import { userDataProps } from "../../data/useEmployeeData"
 import { EmployeeActivityItem } from "./EmployeeActivityItem"
 
 export interface EmployeeActivityListProps {
-    activities: any[]
+    activities?: EmployeeActivityProps[]
+    activitiesLogged?: userDataProps["activities_logged"]
 }
 
 
 
+const ActivityList = styled.ul`
+    list-style: none;
+    margin-top: 50px;
+`
+const ActivityListItem = styled.li`
+    margin-bottom: 20px;
 
-const EmployeeActivityListComponent = ({ activities }: EmployeeActivityListProps) => {
-    
+`
+
+const EmployeeActivityListComponent = ({ activities, activitiesLogged }: EmployeeActivityListProps) => {
+
+    const findHoursLogged = (employeeActivityName: EmployeeActivityProps["activity_name"]) => { 
+        const activity = activitiesLogged?.find((activity) => activity.activity_name === employeeActivityName )
+        return activity?.hours_logged ?? 0
+    }
+
+
+
     return (
         <div>
-            <h1>Activities</h1>
-            <EmployeeActivityItem activityDepartement="IT" activityDescription="hei" activityLoggedHours={5} activityName="ball" />
-            <ul>
-                
-            </ul>
+            <ActivityList>
+                {activities?.map((activity) => (
+                    <ActivityListItem  key={activity._id}>
+                        <EmployeeActivityItem
+                        activityDepartement={activity.departements_autharized}
+                        activityDescription={activity.description}
+                        activityName={activity.activity_name}
+                        findLoggedHoursForActivity={findHoursLogged}
+                        />
+                        
+                    </ActivityListItem>
+                ))}
+            </ActivityList>
         </div>
     )
 
